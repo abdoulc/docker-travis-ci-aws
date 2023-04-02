@@ -1,0 +1,10 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t abdoultodocker/docker-travis-ci-aws -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true abdoultodocker/docker-travis-ci-aws npm run test
+  
